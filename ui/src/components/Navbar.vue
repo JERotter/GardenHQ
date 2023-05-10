@@ -1,6 +1,7 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <nav class="navbar">
-    <a href="http://localhost:5173/"><img class="logo" src="src/images/gardenHQlogo.png" alt="Garden HQ logo" /></a> 
+    <a href="http://localhost:5173/"><img src="images/avatar1.jpeg" alt="Garden HQ logo" /></a> 
 
     <div>
       <div>
@@ -68,8 +69,8 @@ li {
 }
 
 .logo {
-  height: 150px;
-  width: 150px;
+  height: 30px;
+  width: 30px;
 }
 
 /* this is kinda dumb */
