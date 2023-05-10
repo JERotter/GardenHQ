@@ -1,0 +1,5 @@
+﻿<Properties StartupConfiguration="{B47FA0E2-29D2-48CA-9478-12D5E9E39C85}|Default">
+  <MonoDevelop.Ide.ItemProperties.GardenHQ.Api FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.GardenHQ.Data FirstBuild="True" />
+  <MultiItemStartupConfigurations />
+</Properties>
