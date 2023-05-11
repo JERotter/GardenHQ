@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <nav class="navbar">
-    <a href="http://localhost:5173/"><img src="images/avatar1.jpeg" alt="Garden HQ logo" /></a> 
+    <a href="http://localhost:5173/"><img class="logo" src="../assets/images/GardenHQLogo.png" alt="Garden HQ logo" /></a> 
 
     <div>
       <div>
@@ -32,6 +32,7 @@
 
 <style scoped>
 .navbar {
+  height: 70px;
   display: flex;
   background-color: #8fa971;
   justify-content: space-between;
@@ -47,15 +48,13 @@ ul {
 }
 
 .links:hover {
-    /* color: #84c8df; */
-    /* color: #3a6a93; */
     color: #2b2c38;
 }
 
 .socials {
   list-style-type: none;
   display: flex;
-  width: 500px;
+  /* width: 500px; */
   justify-content: right;
   margin: 0;
   color: white;
@@ -69,16 +68,9 @@ li {
 }
 
 .logo {
-  height: 30px;
-  width: 30px;
-}
-
-/* this is kinda dumb */
-.logo:hover {
-/* filter: drop-shadow(0 0 0.85rem rgb(236, 236, 228)); */
-/* filter: drop-shadow(0 0 0.85rem #DF949D ); */
-/* filter: drop-shadow(0 0 0.85rem #ADD8E6 ); */
-filter: drop-shadow(0 0 0.85rem #3a6a93 );
+  height: 48px;
+  width: 50px;
+  margin: 5px;
 }
 
 a {
@@ -116,6 +108,7 @@ a {
     }
 
     nav {
+      max-width: 1000px;
         display: flex;
         flex-direction: column-reverse;
         background-color: #2b2c38;
@@ -128,12 +121,12 @@ a {
 </style>
 
 // <script>
-// const hamburgerButton = document.getElementById('hamburger')
-// const navList = document.getElementById('nav-list')
+const hamburgerButton = document.getElementById('hamburger')
+const navList = document.getElementById('nav-list')
 
-// function toggleButton() {
-//     navList.classList.toggle('show')
-// }
+function toggleButton() {
+    navList.classList.toggle('show')
+}
 
-// hamburgerButton.addEventListener('click', toggleButton)
-// </script>
+hamburgerButton.addEventListener('click', toggleButton)
+</script>
