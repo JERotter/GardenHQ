@@ -10,8 +10,8 @@
 
 <style>
 #footer{
-/* background-color: #6f5e4f; */
-background-color: #E3BBBD;
+background-color: #aea79f;
+/* background-color: #E3BBBD; */
 padding: 1rem 1.5rem 1.3rem;
 }
 
