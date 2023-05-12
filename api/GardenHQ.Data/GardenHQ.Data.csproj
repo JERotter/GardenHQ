@@ -29,8 +29,16 @@
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <None Remove="Dtos\" />
+    <None Remove="Dtos\ResponseDtos\" />
+    <None Remove="Dtos\RequestDtos\" />
+    <None Remove="Profiles\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Dtos\ResponseDtos\" />
+    <Folder Include="Dtos\RequestDtos\" />
+    <Folder Include="Profiles\" />
   </ItemGroup>
 </Project>
