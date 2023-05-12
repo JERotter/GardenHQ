@@ -23,15 +23,14 @@ namespace GardenHQ.Api.Controllers
             _logger = logger;
         }
 
-        // POST: api/User
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("Populate")]
-        public async Task<ActionResult<BaseResponseDto>> PostUsers()
-        {
-            var response = await _usersService.PopulateUsers();
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPost("Populate")]
+        //public async Task<ActionResult<BaseResponseDto>> PostUsers()
+        //{
+        //    var response = await _usersService.PopulateUsers();
 
-            return response.Success ? Ok(response) : NotFound(response);
-        }
+        //    return response.Success ? Ok(response) : NotFound(response);
+        //}
 
         [HttpPost]
         public async Task<ActionResult<BaseResponseDto>> CreateUser(NewUserRequestDto requestDto)
@@ -42,7 +41,6 @@ namespace GardenHQ.Api.Controllers
 
         }
 
-        // GET: api/Employee
         [HttpGet("Users")]
         public async Task<ActionResult<IEnumerable<UsersListResponseDto>>> GetUsers()
         {
@@ -51,29 +49,20 @@ namespace GardenHQ.Api.Controllers
             return response.Success ? Ok(response) : NotFound(response);
         }
 
-        //// GET: api/Users/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        [HttpPut]
+        public async Task<ActionResult<BaseResponseDto>> PutUsers(Guid userId, NewUserRequestDto UserRequestDto)
+        {
+            var response = await _usersService.UpdateUser(userId, UserRequestDto);
 
-        //// POST: api/Users
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+            return response.Success ? Ok(response) : NotFound(response);
+        }
 
-        //// PUT: api/Users/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        [HttpDelete]
+        public async Task<ActionResult<BaseResponseDto>> DeleteUser(Guid userId)
+        {
+            var response = await _usersService.DeleteUser(userId);
 
-        //// DELETE: api/Users/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+            return response.Success ? Ok(response) : NotFound(response);
+        }
     }
 }
