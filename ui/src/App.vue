@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <navbar />
+    <!-- <navbar /> -->
+    <sidebar/>
     <router-view />
     <footbar />
   </div>
@@ -9,12 +10,14 @@
 <script>
 import navbar from '/src/components/Navbar.vue'
 import footbar from './components/Footer.vue'
+import sidebar from './components/Sidebar.vue'
 
 export default {
    name: 'app',
   components: {
      navbar,
-     footbar
+     footbar,
+     sidebar
  } 
 }
 </script>

@@ -5,6 +5,24 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
+          <Node name="api" expanded="True">
+            <Node name="GardenHQ.Api" expanded="True">
+              <Node name="Controllers" expanded="True" />
+            </Node>
+            <Node name="GardenHQ.Core" expanded="True">
+              <Node name="Services" expanded="True" />
+            </Node>
+            <Node name="GardenHQ.Data" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Migrations" expanded="True">
+                <Node name="20230510175716_userEntity.cs" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
           <Node name="api" expanded="True" />
         </State>
       </Pad>
