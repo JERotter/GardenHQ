@@ -60,7 +60,7 @@ namespace GardenHQ.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Address");
+                    b.ToTable("Address", (string)null);
                 });
 
             modelBuilder.Entity("GardenHQ.Data.Entities.GardenTask", b =>
@@ -104,7 +104,7 @@ namespace GardenHQ.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("GardenTasks");
+                    b.ToTable("GardenTasks", (string)null);
                 });
 
             modelBuilder.Entity("GardenHQ.Data.Entities.User", b =>
@@ -155,7 +155,7 @@ namespace GardenHQ.Data.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("GardenHQ.Data.Entities.GardenTask", b =>

@@ -24,16 +24,37 @@ public class UsersService : IUsersService
     {
         var fakeUserId = new Guid();
 
+        var fakeAddress = new Address
+        {
+            Id = new Guid(),
+            StreetAddress = "123 four st",
+            StreetAddressLine2 = null,
+            City = "CityTowneShire",
+            Country = "United States",
+            ZipCode = "12345",
+            State = "HI",
+            CreatedBy = new Guid(),
+            LastUpdatedBy = new Guid(),
+            CreatedOn = DateTime.UtcNow,
+            LastUpdated = DateTime.UtcNow
+
+        };
+
         var dbUser = new User
         {
-            //CreatedBy = fakeUser,
-            //CreatedOn = DateTime.UtcNow,
-            //DepartmentId = null,
+            CreatedBy = fakeUserId,
+            LastUpdatedBy = fakeUserId,
+            LastUpdated = DateTime.UtcNow,
+            CreatedOn = DateTime.UtcNow,
             FirstName = "M.",
             LastName = "Stringer",
-            //Email = "string@string",
+            Email = "string@string",
+            Address = fakeAddress,
+            Phone = "(111) 555 - 5555",
+            DateOfBirth = "5/9/1998",
+            AssignedTasks = null,
             Type = UserType.Volunteer,
-            Id = fakeUserId,
+            Id = fakeUserId
         };
 
         _dbContext.Add(dbUser);
