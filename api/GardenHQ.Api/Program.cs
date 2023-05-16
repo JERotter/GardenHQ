@@ -16,6 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<UsersService, UsersService>();
+builder.Services.AddScoped<GardenTaskService, GardenTaskService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddCors();
@@ -66,4 +67,5 @@ app.Run();
 void ConfigureServices(IServiceCollection services)
 {
     services.AddTransient<IUsersService, UsersService>();
+    services.AddTransient<IGardenTaskService, GardenTaskService>();
 }
