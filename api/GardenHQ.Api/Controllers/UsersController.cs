@@ -24,13 +24,13 @@ namespace GardenHQ.Api.Controllers
         }
 
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost("Populate")]
-        //public async Task<ActionResult<BaseResponseDto>> PostUsers()
-        //{
-        //    var response = await _usersService.PopulateUsers();
+        [HttpPost("Populate")]
+        public async Task<ActionResult<BaseResponseDto>> PostUsers()
+        {
+            var response = await _usersService.PopulateUsers();
 
-        //    return response.Success ? Ok(response) : NotFound(response);
-        //}
+            return response.Success ? Ok(response) : NotFound(response);
+        }
 
         [HttpPost]
         public async Task<ActionResult<BaseResponseDto>> CreateUser(NewUserRequestDto requestDto)
@@ -42,9 +42,17 @@ namespace GardenHQ.Api.Controllers
         }
 
         [HttpGet("Users")]
-        public async Task<ActionResult<IEnumerable<UsersListResponseDto>>> GetUsers()
+        public async Task<ActionResult<BaseResponseDto<IEnumerable<UsersListResponseDto>>>> GetUsers()
         {
             var response = await _usersService.GetUsers();
+
+            return response.Success ? Ok(response) : NotFound(response);
+        }
+
+        [HttpGet("User-profile/{userId}")]
+        public async Task<ActionResult<BaseResponseDto<UserProfileDto>>> GetUserProfile(Guid userId)
+        {
+            var response = await _usersService.GetUserProfile(userId);
 
             return response.Success ? Ok(response) : NotFound(response);
         }

@@ -3,6 +3,7 @@ using System;
 using GardenHQ.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GardenHQ.Data.Migrations
 {
     [DbContext(typeof(GardenDbContext))]
-    partial class GardenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230516143512_GardenTaskandAddressEntities")]
+    partial class GardenTaskandAddressEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,37 +66,6 @@ namespace GardenHQ.Data.Migrations
                     b.ToTable("Address");
                 });
 
-            modelBuilder.Entity("GardenHQ.Data.Entities.Comment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("CommentBody")
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("CreatedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid?>("GardenTaskId")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("LastUpdated")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("LastUpdatedBy")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GardenTaskId");
-
-                    b.ToTable("Comment");
-                });
-
             modelBuilder.Entity("GardenHQ.Data.Entities.GardenTask", b =>
                 {
                     b.Property<Guid>("Id")
@@ -114,9 +86,6 @@ namespace GardenHQ.Data.Migrations
 
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
 
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("timestamp with time zone");
@@ -192,13 +161,6 @@ namespace GardenHQ.Data.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("GardenHQ.Data.Entities.Comment", b =>
-                {
-                    b.HasOne("GardenHQ.Data.Entities.GardenTask", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("GardenTaskId");
-                });
-
             modelBuilder.Entity("GardenHQ.Data.Entities.GardenTask", b =>
                 {
                     b.HasOne("GardenHQ.Data.Entities.User", null)
@@ -215,11 +177,6 @@ namespace GardenHQ.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Address");
-                });
-
-            modelBuilder.Entity("GardenHQ.Data.Entities.GardenTask", b =>
-                {
-                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("GardenHQ.Data.Entities.User", b =>
