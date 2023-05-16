@@ -86,6 +86,10 @@ public class UsersService : IUsersService
         return new BaseResponseDto<IEnumerable<UsersListResponseDto>> { Message = "Users found", Success = true, Data = dbUsers };
     }
 
+    //get user profile []
+    //patch user role or type [admin only]
+
+
     public async Task<BaseResponseDto> UpdateUser(Guid userId, NewUserRequestDto UserRequestDto)
     {
         var dbUser = _dbContext.Set<User>().SingleOrDefault(u => u.Id == userId);

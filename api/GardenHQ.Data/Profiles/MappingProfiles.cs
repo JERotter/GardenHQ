@@ -20,12 +20,13 @@ public class MappingProfiles : Profile
         //));
 
         //source, destination
+        //users
         CreateMap<User, UsersListResponseDto>();
-        //CreateMap<EmployeeResponseDto, User>();
         CreateMap<NewUserRequestDto, User>();
-        //CreateMap<DepartmentRequestDto, Department>();
-        //CreateMap<Department, DepartmentResponseDto>();
 
+        //tasks
+        CreateMap<Task, TaskTableDto>();
+        CreateMap<NewTaskRequestDto, Task>();
     }
 }
 

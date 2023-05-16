@@ -19,23 +19,23 @@ public class GardenTaskController : ControllerBase
         _logger = logger;
     }
 
-    //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    [HttpPost("Populate")]
-    public async Task<ActionResult<BaseResponseDto>> PopulateTasks()
+    ////// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    //[HttpPost("Populate")]
+    //public async Task<ActionResult<BaseResponseDto>> PopulateTasks()
+    //{
+    //    var response = await _taskService.PopulateTasks();
+
+    //    return response.Success ? Ok(response) : NotFound(response);
+    //}
+
+    [HttpPost]
+    public async Task<ActionResult<BaseResponseDto>> CreateTask(NewTaskRequestDto taskRequestDto)
     {
-        var response = await _taskService.PopulateTasks();
+        var response = await _taskService.CreateTask(taskRequestDto);
 
         return response.Success ? Ok(response) : NotFound(response);
+
     }
-
-    //    [HttpPost]
-    //    public async Task<ActionResult<BaseResponseDto>> CreateUser(NewUserRequestDto requestDto)
-    //    {
-    //        var response = await _taskService.CreateUser(requestDto);
-
-    //        return response.Success ? Ok(response) : NotFound(response);
-
-    //    }
 
     //    [HttpGet("Users")]
     //    public async Task<ActionResult<IEnumerable<UsersListResponseDto>>> GetUsers()
