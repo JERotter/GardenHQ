@@ -86,9 +86,25 @@ public class UsersService : IUsersService
         return new BaseResponseDto<IEnumerable<UsersListResponseDto>> { Message = "Users found", Success = true, Data = dbUsers };
     }
 
-    //get user profile []
-    //patch user role or type [admin only]
+    public async Task<BaseResponseDto<UserProfileDto>> GetUserProfile(Guid userId)
+    {
+        var dbUser = await _dbContext.Set<User>()
+            .Where(u => u.Id == userId)
+            .SingleOrDefaultAsync();
 
+        var dbProfile = _mapper.Map<UserProfileDto>(dbUser);
+
+        if (dbUser == null)
+        {
+            return new BaseResponseDto<UserProfileDto> { Message = "Not found", Success = false };
+        }
+
+        dbProfile.JoinedDate = dbUser.CreatedOn;
+
+        return new BaseResponseDto<UserProfileDto> { Message = "User found", Success = true, Data = dbProfile };
+    }
+
+    //patch user type [admin only]
 
     public async Task<BaseResponseDto> UpdateUser(Guid userId, NewUserRequestDto UserRequestDto)
     {

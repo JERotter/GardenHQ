@@ -23,6 +23,7 @@ public class MappingProfiles : Profile
         //users
         CreateMap<User, UsersListResponseDto>();
         CreateMap<NewUserRequestDto, User>();
+        CreateMap<User, UserProfileDto>();
 
         //tasks
         CreateMap<Task, TaskTableDto>();

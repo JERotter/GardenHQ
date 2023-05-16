@@ -42,9 +42,17 @@ namespace GardenHQ.Api.Controllers
         }
 
         [HttpGet("Users")]
-        public async Task<ActionResult<IEnumerable<UsersListResponseDto>>> GetUsers()
+        public async Task<ActionResult<BaseResponseDto<IEnumerable<UsersListResponseDto>>>> GetUsers()
         {
             var response = await _usersService.GetUsers();
+
+            return response.Success ? Ok(response) : NotFound(response);
+        }
+
+        [HttpGet("User-profile/{userId}")]
+        public async Task<ActionResult<BaseResponseDto<UserProfileDto>>> GetUserProfile(Guid userId)
+        {
+            var response = await _usersService.GetUserProfile(userId);
 
             return response.Success ? Ok(response) : NotFound(response);
         }
