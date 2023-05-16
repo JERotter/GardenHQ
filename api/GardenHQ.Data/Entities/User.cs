@@ -10,5 +10,5 @@ public class User : BaseEntity
 	public string Phone { get; set; }
     public string DateOfBirth { get; set; }
     public UserType Type { get; set; }
-	public List<Task>? AssignedTasks { get; set; }
+	public List<GardenTask>? AssignedTasks { get; set; }
 }
