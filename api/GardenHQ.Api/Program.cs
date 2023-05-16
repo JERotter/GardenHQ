@@ -18,6 +18,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<UsersService, UsersService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+builder.Services.AddCors();
+
 string postgresConnectionString = string.Empty;
 
 postgresConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -25,11 +27,6 @@ builder.Services.AddDbContext<GardenDbContext>(options =>
 {
     options.UseNpgsql(postgresConnectionString);
 });
-//string postgresConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-//builder.Services.AddDbContext<GardenDbContext>(options =>
-//{
-//    options.UseNpgsql(postgresConnectionString);
-//});
 
 var config = new MapperConfiguration(options =>
 {
@@ -46,6 +43,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(options =>
+{
+    options.WithOrigins("http://127.0.0.1:3000");
+
+});
 
 app.UseHttpsRedirection();
 

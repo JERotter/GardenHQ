@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
     <v-footer
-      class="bg-indigo-lighten-1 text-center d-flex flex-column"
+      class="bg-brown-lighten-5 text-center d-flex flex-column"
     >
       <div>
         <v-btn

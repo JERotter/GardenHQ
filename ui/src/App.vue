@@ -1,12 +1,9 @@
 <template>
-  <router-view/>
-  <footbar/>
+  <router-view />
 </template>
 
-<script setup>
-import footbar from './components/Footer.vue';
+<script>
+
 </script>
 
-<style>
-
-</style>
+<style></style>
