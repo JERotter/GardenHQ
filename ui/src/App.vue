@@ -1,20 +1,9 @@
 <template>
-  <div id="app">
-    <navbar />
-    <router-view />
-    <footbar />
-  </div>
+  <router-view />
 </template>
 
 <script>
-import navbar from '/src/components/Navbar.vue'
-import footbar from './components/Footer.vue'
 
-export default {
-   name: 'app',
-  components: {
-     navbar,
-     footbar
- } 
-}
 </script>
+
+<style></style>

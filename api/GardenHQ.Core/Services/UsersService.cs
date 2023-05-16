@@ -4,6 +4,7 @@ using GardenHQ.Data;
 using GardenHQ.Data.Dtos.RequestDtos;
 using GardenHQ.Data.Dtos.ResponseDtos;
 using GardenHQ.Data.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace GardenHQ.Core.Services;
@@ -14,7 +15,7 @@ public class UsersService : IUsersService
     private readonly IMapper _mapper;
 
     public UsersService(GardenDbContext dbContext, IMapper mapper)
-	{
+    {
         _mapper = mapper;
         _dbContext = dbContext;
     }
@@ -63,4 +64,35 @@ public class UsersService : IUsersService
 
         return new BaseResponseDto<IEnumerable<UsersListResponseDto>> { Message = "Users found", Success = true, Data = dbUsers };
     }
+
+    public async Task<BaseResponseDto> UpdateUser(Guid userId, NewUserRequestDto UserRequestDto)
+    {
+        var dbUser = _dbContext.Set<User>().SingleOrDefault(u => u.Id == userId);
+
+        if (dbUser == null)
+        {
+            return new BaseResponseDto { Message = $"User with id #{userId} does not exist.", Success = false };
+        }
+
+        _mapper.Map(UserRequestDto, dbUser);
+        await _dbContext.SaveChangesAsync();
+
+        return new BaseResponseDto { Message = "User information updated.", Success = true };
+    }
+
+    public async Task<BaseResponseDto> DeleteUser(Guid userId)
+    {
+        var dbUser = _dbContext.Set<User>().SingleOrDefault(u => u.Id == userId);
+
+        if (dbUser == null)
+        {
+            return new BaseResponseDto { Message = $"User with id #{userId} does not exist.", Success = false };
+        }
+
+        _dbContext.Remove(dbUser);
+        await _dbContext.SaveChangesAsync();
+
+        return new BaseResponseDto { Message = "User has been deleted.", Success = true };
+    }
+
 }

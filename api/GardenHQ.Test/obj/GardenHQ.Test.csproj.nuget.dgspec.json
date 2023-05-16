@@ -4,14 +4,176 @@
     "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Test/GardenHQ.Test.csproj": {}
   },
   "projects": {
-    "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Test/GardenHQ.Test.csproj": {
+    "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Api/GardenHQ.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Test/GardenHQ.Test.csproj",
-        "projectName": "GardenHQ.Test",
-        "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Test/GardenHQ.Test.csproj",
+        "projectUniqueName": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Api/GardenHQ.Api.csproj",
+        "projectName": "GardenHQ.Api",
+        "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Api/GardenHQ.Api.csproj",
         "packagesPath": "/Users/jenell/.nuget/packages/",
-        "outputPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Test/obj/",
+        "outputPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/jenell/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Core/GardenHQ.Core.csproj": {
+                "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Core/GardenHQ.Core.csproj"
+              },
+              "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Data/GardenHQ.Data.csproj": {
+                "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Data/GardenHQ.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.15, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Identity.Client": {
+              "target": "Package",
+              "version": "[4.53.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Core/GardenHQ.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Core/GardenHQ.Core.csproj",
+        "projectName": "GardenHQ.Core",
+        "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Core/GardenHQ.Core.csproj",
+        "packagesPath": "/Users/jenell/.nuget/packages/",
+        "outputPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/jenell/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Data/GardenHQ.Data.csproj": {
+                "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Data/GardenHQ.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.12.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Data/GardenHQ.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Data/GardenHQ.Data.csproj",
+        "projectName": "GardenHQ.Data",
+        "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Data/GardenHQ.Data.csproj",
+        "packagesPath": "/Users/jenell/.nuget/packages/",
+        "outputPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Data/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jenell/.nuget/NuGet/NuGet.Config"
@@ -38,9 +200,119 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Identity.Client": {
+              "target": "Package",
+              "version": "[4.53.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Test/GardenHQ.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Test/GardenHQ.Test.csproj",
+        "projectName": "GardenHQ.Test",
+        "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Test/GardenHQ.Test.csproj",
+        "packagesPath": "/Users/jenell/.nuget/packages/",
+        "outputPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Test/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/jenell/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Api/GardenHQ.Api.csproj": {
+                "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Api/GardenHQ.Api.csproj"
+              },
+              "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Core/GardenHQ.Core.csproj": {
+                "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Core/GardenHQ.Core.csproj"
+              },
+              "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Data/GardenHQ.Data.csproj": {
+                "projectPath": "/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Data/GardenHQ.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.11.0, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.1.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.4, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

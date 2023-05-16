@@ -1,26 +1,30 @@
-<script setup>
-// import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
-  <main class="body"></main>
+  <v-app id="inspire">
+    <v-app-bar
+      app
+      extended
+    >
+      <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
+
+      <v-toolbar-title>Garden HQ</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+    </v-app-bar>
+      <img src="../assets/images/GardenHQ.png" alt="" />
+    <v-main>
+      <v-container>
+        
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-.body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  background-position: center;
-  background-size: cover;
-  background-image: url('../assets/images/Garden HQ.png');
-}
-
-@media (min-width: 1024px) {
-  .body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+<script>
+  export default {
+    //
   }
-}
-</style>
+</script>
