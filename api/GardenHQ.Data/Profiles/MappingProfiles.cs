@@ -10,13 +10,14 @@ public class MappingProfiles : Profile
 {
 	public MappingProfiles()
 	{
-       // CreateMap<List<EmployeeRoles>, string>().ConvertUsing(x => (
-       //    x.Contains(EmployeeRoles.Admin) ? "Admin" :
-       //    x.Contains(EmployeeRoles.Minion) ? "Minion" :
-       //    x.Contains(EmployeeRoles.Peon) ? "Peon" :
+        CreateMap<DateTime, string>().ConvertUsing(x => x.ToString("MM/dd/yyyy"));
 
-       //    "Status not accounted for. Mapping profile needs to be updated."
-       //));
+        // CreateMap<List<UserRoles>, string>().ConvertUsing(x => (
+        //    x.Contains(UserRoles.Admin) ? "Admin" :
+        //    x.Contains(UserRoles.Manager) ? "Manager" :
+        //    x.Contains(UserRoles.Volunteer) ? "Volunteer" :
+        //    "Status not accounted for. Mapping profile needs to be updated."
+        //));
 
         //source, destination
         CreateMap<User, UsersListResponseDto>();

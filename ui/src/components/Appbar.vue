@@ -3,7 +3,7 @@
     <v-card>
   <v-app-bar 
       color="teal-darken-4"
-      image="../assets/images/vegetables.jpeg "
+      image="../assets/images/vegetables2.jpeg "
     >
       <template v-slot:image>
         <v-img
@@ -24,7 +24,7 @@
           </v-btn> 
 
        <v-btn icon to="/dashboard" link>
-        <v-icon>mdi-view-dashboard</v-icon>
+        <v-icon>mdi-view-dashboard</v-icon>s
       </v-btn> 
 
        <v-btn icon>

@@ -3,6 +3,7 @@ namespace GardenHQ.Data.Entities;
 
 public enum UserType
 {
-    GardenAdmin,
+    Admin,
+    Manager,
     Volunteer
 }
