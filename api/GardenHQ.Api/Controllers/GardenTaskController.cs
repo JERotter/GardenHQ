@@ -37,28 +37,36 @@ public class GardenTaskController : ControllerBase
 
     }
 
-    //    [HttpGet("Users")]
-    //    public async Task<ActionResult<IEnumerable<UsersListResponseDto>>> GetUsers()
-    //    {
-    //        var response = await _taskService.GetUsers();
+    [HttpGet("tasks")]
+    public async Task<ActionResult<IEnumerable<TaskTableDto>>> GetTasks()
+    {
+        var response = await _taskService.GetTasks();
 
-    //        return response.Success ? Ok(response) : NotFound(response);
-    //    }
+        return response.Success ? Ok(response) : NotFound(response);
+    }
 
-    //    [HttpPut]
-    //    public async Task<ActionResult<BaseResponseDto>> PutUsers(Guid userId, NewUserRequestDto UserRequestDto)
-    //    {
-    //        var response = await _taskService.UpdateUser(userId, UserRequestDto);
+    [HttpGet("taskId")]
+    public async Task<ActionResult<BaseResponseDto>> GetTaskDetail(Guid taskId)
+    {
+        var response = await _taskService.GetTaskDetail(taskId);
 
-    //        return response.Success ? Ok(response) : NotFound(response);
-    //    }
+        return response.Success ? Ok(response) : NotFound(response);
+    }
 
-    //    [HttpDelete]
-    //    public async Task<ActionResult<BaseResponseDto>> DeleteUser(Guid userId)
-    //    {
-    //        var response = await _taskService.DeleteUser(userId);
+    [HttpPut("taskId")]
+    public async Task<ActionResult<BaseResponseDto>> UpdateTask(Guid taskId, NewTaskRequestDto taskRequestDto)
+    {
+        var response = await _taskService.UpdateTask(taskId, taskRequestDto);
 
-    //        return response.Success ? Ok(response) : NotFound(response);
-    //    }
-    //
+        return response.Success ? Ok(response) : NotFound(response);
+    }
+   
+    [HttpDelete("taskId")]
+    public async Task<ActionResult<BaseResponseDto>> DeleteTask(Guid taskId)
+    {
+        var response = await _taskService.DeleteTask(taskId);
+
+        return response.Success ? Ok(response) : NotFound(response);
+    }
+
 }

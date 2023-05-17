@@ -3,7 +3,7 @@ using GardenHQ.Data.Entities;
 
 namespace GardenHQ.Data.Dtos.ResponseDtos;
 
-public class TaskTableDto : BaseResponseDto
+public class TaskTableDto
 {
 	public Guid Id { get; set; }
 	public string Title { get; set; }
