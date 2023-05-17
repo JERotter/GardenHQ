@@ -26,8 +26,9 @@ public class MappingProfiles : Profile
         CreateMap<User, UserProfileDto>();
 
         //tasks
-        CreateMap<Task, TaskTableDto>();
-        CreateMap<NewTaskRequestDto, Task>();
+        CreateMap<GardenTask, TaskTableDto>();
+        CreateMap<NewTaskRequestDto, GardenTask>();
+        CreateMap<GardenTask, TaskDetailDto>();
     }
 }
 

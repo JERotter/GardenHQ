@@ -4,6 +4,7 @@ using GardenHQ.Data;
 using GardenHQ.Data.Dtos.RequestDtos;
 using GardenHQ.Data.Dtos.ResponseDtos;
 using GardenHQ.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace GardenHQ.Core.Services;
 
@@ -43,66 +44,88 @@ public class GardenTaskService : IGardenTaskService
 
     //}
 
+
+    //create task and set priority
     public async Task<BaseResponseDto> CreateTask(NewTaskRequestDto taskRequestDto)
     {
-        var newTask = _mapper.Map<User>(taskRequestDto);
+        var newTask = _mapper.Map<GardenTask>(taskRequestDto);
 
         await _dbContext.AddAsync(newTask);
         await _dbContext.SaveChangesAsync();
         return new BaseResponseDto { Message = "New task created", Success = true };
     }
 
-    //get all available tasks
+    public async Task<BaseResponseDto<IEnumerable<TaskTableDto>>> GetTasks()
+    {
+        //var dbUsers = _dbContext.Set<User>()
+        //    .Select(u => _mapper.Map<UsersListResponseDto>(u));
+
+        var dbTasks = _dbContext.Set<GardenTask>()
+            .Select(t => _mapper.Map<TaskTableDto>(t));
+
+        if (dbTasks == null)
+        {
+            return new BaseResponseDto<IEnumerable<TaskTableDto>> { Message = "No tasks found", Success = false };
+        }
+
+        return new BaseResponseDto<IEnumerable<TaskTableDto>> { Message = "Tasks found", Success = true, Data = dbTasks };
+    }
+
     //get task by id
-    //create task and set priority
+    public async Task<BaseResponseDto<TaskDetailDto>> GetTaskDetail(Guid taskId)
+    {
+        var dbTask = await _dbContext.Set<GardenTask>()
+            .Where(t => t.Id == taskId)
+            .Select(t => _mapper.Map<TaskDetailDto>(t))
+            .SingleOrDefaultAsync();
+
+        if (dbTask == null)
+        {
+            return new BaseResponseDto<TaskDetailDto> { Message = "Not found", Success = false };
+        }
+
+        return new BaseResponseDto<TaskDetailDto> { Message = "Task found", Success = true, Data = dbTask };
+    }
+
+    //update task
+    public async Task<BaseResponseDto> UpdateTask(Guid taskId, NewTaskRequestDto taskRequestDto)
+    {
+        var dbTask = _dbContext.Set<GardenTask>()
+            .SingleOrDefault(t => t.Id == taskId);
+           
+
+        if (dbTask == null)
+        {
+            return new BaseResponseDto { Message = $"Task with id #{dbTask} does not exist.", Success = false };
+        }
+
+        _mapper.Map(taskRequestDto, dbTask);
+        await _dbContext.SaveChangesAsync();
+
+        return new BaseResponseDto { Message = "Task updated.", Success = true };
+    }
+
     //delete tasks
+    public async Task<BaseResponseDto> DeleteTask(Guid taskId)
+    {
+        var dbTask = _dbContext.Set<GardenTask>()
+            .SingleOrDefault(t => t.Id == taskId);
+
+        if (dbTask == null)
+        {
+            return new BaseResponseDto { Message = $"Task #{dbTask} does not exist.", Success = false };
+        }
+
+        _dbContext.Remove(dbTask);
+        await _dbContext.SaveChangesAsync();
+
+        return new BaseResponseDto { Message = "Task has been deleted.", Success = true };
+    }
+
+
     //comment on task [volunteer, manager]
-    //update tasks
     //complete task [T/F]
     //assign tasks [manager, admin] by task id and user id
     //managers report to admin somehow, amybe a task report?
 
-
-    //public async Task<BaseResponseDto<IEnumerable<UsersListResponseDto>>> GetUsers()
-    //{
-    //    var dbUsers = _dbContext.Set<User>()
-    //        .Select(u => _mapper.Map<UsersListResponseDto>(u));
-
-    //    if (dbUsers == null)
-    //    {
-    //        return new BaseResponseDto<IEnumerable<UsersListResponseDto>> { Message = "No users found", Success = false };
-    //    }
-
-    //    return new BaseResponseDto<IEnumerable<UsersListResponseDto>> { Message = "Users found", Success = true, Data = dbUsers };
-    //}
-
-    //public async Task<BaseResponseDto> UpdateUser(Guid userId, NewUserRequestDto UserRequestDto)
-    //{
-    //    var dbUser = _dbContext.Set<User>().SingleOrDefault(u => u.Id == userId);
-
-    //    if (dbUser == null)
-    //    {
-    //        return new BaseResponseDto { Message = $"User with id #{userId} does not exist.", Success = false };
-    //    }
-
-    //    _mapper.Map(UserRequestDto, dbUser);
-    //    await _dbContext.SaveChangesAsync();
-
-    //    return new BaseResponseDto { Message = "User information updated.", Success = true };
-    //}
-
-    //public async Task<BaseResponseDto> DeleteUser(Guid userId)
-    //{
-    //    var dbUser = _dbContext.Set<User>().SingleOrDefault(u => u.Id == userId);
-
-    //    if (dbUser == null)
-    //    {
-    //        return new BaseResponseDto { Message = $"User with id #{userId} does not exist.", Success = false };
-    //    }
-
-    //    _dbContext.Remove(dbUser);
-    //    await _dbContext.SaveChangesAsync();
-
-    //    return new BaseResponseDto { Message = "User has been deleted.", Success = true };
-    //}
 }

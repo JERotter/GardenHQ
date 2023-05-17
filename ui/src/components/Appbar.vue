@@ -3,7 +3,7 @@
     <v-card>
   <v-app-bar 
       color="teal-darken-4"
-      image="../assets/images/vegetables2.jpeg "
+      image="../assets/images/vegetables.jpeg "
     >
       <template v-slot:image>
         <v-img
@@ -11,11 +11,7 @@
         ></v-img>
       </template>
 
-       <template v-slot:prepend>
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
-          </template> 
-
-      <v-app-bar-title>Users</v-app-bar-title>
+      <v-app-bar-title><a href="/">Garden HQ</a></v-app-bar-title>
 
        <v-spacer></v-spacer>
 
