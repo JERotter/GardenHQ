@@ -1,8 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
     <v-footer
-      class="bg-brown-lighten-5 text-center d-flex flex-column"
-    >
+      class="bg-brown-lighten-5 text-center d-flex flex-column" app >
       <div>
         <v-btn
           v-for="icon in icons"
