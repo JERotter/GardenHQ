@@ -47,7 +47,7 @@
         </thead>
         <tbody>
           <tr v-for="user in users.data" :key="user.id">
-            <td>{{ user.id }}</td>
+            <td>{{ user.abbreviatedId }}</td>
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
             <td>{{ user.type }}</td>

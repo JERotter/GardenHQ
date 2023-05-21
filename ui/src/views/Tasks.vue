@@ -51,7 +51,7 @@
           </thead>
           <tbody>
             <tr v-for="task in tasks.data" :key="task.id">
-              <td>{{ task.id }}</td>
+              <td>{{ task.abbreviatedId }}</td>
               <td>{{ task.title }}</td>
               <td>{{ task.createdOn }}</td>
               <td>{{ task.priority }}</td>
