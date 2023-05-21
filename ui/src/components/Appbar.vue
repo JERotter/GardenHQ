@@ -11,7 +11,7 @@
         ></v-img>
       </template>
 
-      <v-app-bar-title><a href="/">Garden HQ</a></v-app-bar-title>
+      <v-app-bar-title><a href="/" style="text-decoration: none; color: white">Garden HQ</a></v-app-bar-title>
 
        <v-spacer></v-spacer>
 

@@ -58,6 +58,7 @@ public class UsersService : IUsersService
         };
 
         _dbContext.Add(dbUser);
+        //ASSIGN public int AbbreviatedId { get; set; }
         await _dbContext.SaveChangesAsync();
         return new BaseResponseDto { Message = "User added", Success = true };
 
@@ -68,6 +69,7 @@ public class UsersService : IUsersService
         var newUser = _mapper.Map<User>(requestDto);
 
         await _dbContext.AddAsync(newUser);
+        //ASSIGN public int AbbreviatedId { get; set; }
         await _dbContext.SaveChangesAsync();
         return new BaseResponseDto { Message = "New user added", Success = true };
     }

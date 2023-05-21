@@ -39,7 +39,7 @@
       <v-table theme="light">
         <thead>
           <tr>
-            <th class="text-left">User Id</th>
+            <th class="text-left">Id</th>
             <th class="text-left">First Name</th>
             <th class="text-left">Last Name</th>
             <th class="text-left">Role</th>

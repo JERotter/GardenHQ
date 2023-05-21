@@ -42,7 +42,7 @@
         <v-table theme="light">
           <thead>
             <tr>
-              <th class="text-left">Task Id</th>
+              <th class="text-left">Id</th>
               <th class="text-left">Title</th>
               <th class="text-left">Start Date</th>
               <th class="text-left">Priority</th>
