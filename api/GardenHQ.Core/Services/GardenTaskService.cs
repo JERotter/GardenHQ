@@ -39,7 +39,6 @@ public class GardenTaskService : IGardenTaskService
     //    };
 
     //    _dbContext.Add(dbTask);
-    //    ASSIGN AbbreviatedId
     //    dbTask.AbbreviatedId = dbTask.Id.ToString().Substring(0, 4);
     //    await _dbContext.SaveChangesAsync();
     //    return new BaseResponseDto { Message = "New task populated", Success = true };
@@ -53,7 +52,6 @@ public class GardenTaskService : IGardenTaskService
         var newTask = _mapper.Map<GardenTask>(taskRequestDto);
 
         await _dbContext.AddAsync(newTask);
-        //ASSIGN AbbreviatedId
         newTask.AbbreviatedId = newTask.Id.ToString().Substring(0, 4);
         await _dbContext.SaveChangesAsync();
         return new BaseResponseDto { Message = "New task created", Success = true };
