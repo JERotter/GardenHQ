@@ -50,7 +50,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="task in tasks.data" :key="task.id">
+            <tr v-for="task in tasks" :key="task.id">
               <td>{{ task.abbreviatedId }}</td>
               <td>{{ task.title }}</td>
               <td>{{ task.createdOn }}</td>
@@ -66,23 +66,43 @@
 </template>
 
 <script>
-import axios from "axios";
 import footbar from "../components/Footer.vue";
+import { useTasksStore } from '@/store/tasks.js';
 
 export default {
-  components: { footbar },
-
-  mounted() {
-    axios.get("https://localhost:7135/api/GardenTask/tasks").then((res) => {
-      this.tasks = res.data;
-      console.log(this.tasks);
-    });
+  components: {
+    footbar
   },
-  data() {
-    return {
-      tasks: [],
-      drawer: null
-    };
+  created() {
+    const tasksStore = useTasksStore();
+    tasksStore.fetchTasks();
   },
+  computed: {
+    tasks() {
+      const tasksStore = useTasksStore();
+      return tasksStore.tasks;
+    }
+  }
 };
+
+//WITHOUT Pinia://
+// import axios from "axios";
+// import footbar from "../components/Footer.vue";
+
+// export default {
+//   components: { footbar },
+
+//   mounted() {
+//     axios.get("https://localhost:7135/api/GardenTask/tasks").then((res) => {
+//       this.tasks = res.data;
+//       console.log(this.tasks);
+//     });
+//   },
+//   data() {
+//     return {
+//       tasks: [],
+//       drawer: null
+//     };
+//   },
+// };
 </script>

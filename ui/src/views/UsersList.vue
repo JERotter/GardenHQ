@@ -49,7 +49,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="user in users.data" :key="user.id">
+            <tr v-for="user in users" :key="user.id">
               <td>{{ user.abbreviatedId }}</td>
               <td>{{ user.firstName }}</td>
               <td>{{ user.lastName }}</td>
@@ -64,23 +64,43 @@
 </template>
 
 <script>
-import axios from "axios";
 import footbar from "../components/Footer.vue";
+import { useUsersStore } from '@/store/users.js';
 
 export default {
-  components: { footbar },
-
-  mounted() {
-    axios.get("https://localhost:7135/api/Users/Users").then((res) => {
-      this.users = res.data;
-      console.log(this.users);
-    });
+  components: {
+    footbar
   },
-  data() {
-    return {
-      users: [],
-      drawer: null
-    };
+  created() {
+    const usersStore = useUsersStore();
+    usersStore.fetchUsers();
   },
+  computed: {
+    users() {
+      const usersStore = useUsersStore();
+      return usersStore.users;
+    }
+  }
 };
+
+//WITHOUT Pinia://
+// import axios from "axios";
+// import footbar from "../components/Footer.vue";
+
+// export default {
+//   components: { footbar },
+
+//   mounted() {
+//     axios.get("https://localhost:7135/api/Users/Users").then((res) => {
+//       this.users = res.data;
+//       console.log(this.users);
+//     });
+//   },
+//   data() {
+//     return {
+//       users: [],
+//       drawer: null
+//     };
+//   },
+// };
 </script>
