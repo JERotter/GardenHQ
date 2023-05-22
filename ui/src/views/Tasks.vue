@@ -82,7 +82,12 @@ export default {
       const tasksStore = useTasksStore();
       return tasksStore.tasks;
     }
-  }
+  },
+  data() {
+    return {
+      drawer: null
+    };
+  },
 };
 
 //WITHOUT Pinia://

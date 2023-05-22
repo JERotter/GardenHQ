@@ -80,9 +80,13 @@ export default {
       const usersStore = useUsersStore();
       return usersStore.users;
     }
-  }
+  },
+  data() {
+    return {
+      drawer: null
+    };
+  },
 };
-
 //WITHOUT Pinia://
 // import axios from "axios";
 // import footbar from "../components/Footer.vue";

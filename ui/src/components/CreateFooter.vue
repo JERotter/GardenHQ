@@ -11,6 +11,14 @@
           :href="getLink(icon)"
         ></v-btn>
       </div>
+  
+      <div class="pt-0">
+        <p>
+          Don't have an invitation code?
+          <a href="/contact">Request an Invite!</a>
+        </p>
+      </div>
+  
       <v-divider></v-divider>
   
       <div>{{ new Date().getFullYear() }} — <strong>Vuetify</strong></div>

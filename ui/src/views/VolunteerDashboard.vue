@@ -34,7 +34,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon to="/dashboard" link>
+      <v-btn icon to="/" link>
         <v-icon>mdi-logout</v-icon>
       </v-btn>
     </v-app-bar>
