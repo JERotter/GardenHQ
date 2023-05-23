@@ -101,8 +101,6 @@ public class UsersService : IUsersService
             return new BaseResponseDto<UserProfileDto> { Message = "Not found", Success = false };
         }
 
-        dbProfile.JoinedDate = dbUser.CreatedOn;
-
         return new BaseResponseDto<UserProfileDto> { Message = "User found", Success = true, Data = dbProfile };
     }
 

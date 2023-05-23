@@ -63,7 +63,7 @@ public class UsersControllerTests
         {
             FirstName = "Test M.",
             LastName = "Stringer",
-            Type = UserType.Volunteer
+            Type = "Volunteer"
         };
         var fakeUserList = new List<UsersListResponseDto>();
         fakeUserList.Add(fakeUserResponseDto);
