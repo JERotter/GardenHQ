@@ -10,9 +10,14 @@ public class MappingProfiles : Profile
 {
 	public MappingProfiles()
 	{
+        //https://docs.automapper.org/en/stable/Custom-type-converters.html
+        CreateMap<UserType, string>().ConvertUsing(x => x.ToString());
+        CreateMap<string, DateOnly>().ConvertUsing(x => DateOnly.Parse(x));
+        CreateMap<string, TimeOnly>().ConvertUsing(x => TimeOnly.Parse(x));
+        CreateMap<DateOnly, string>().ConvertUsing(x => x.ToString("MM/dd/yyyy"));
         CreateMap<DateTime, string>().ConvertUsing(x => x.ToString("MM/dd/yyyy"));
 
-        // CreateMap<List<UserRoles>, string>().ConvertUsing(x => (
+        // CreateMap<List<Teams>, string>().ConvertUsing(x => (
         //    x.Contains(UserRoles.Admin) ? "Admin" :
         //    x.Contains(UserRoles.Manager) ? "Manager" :
         //    x.Contains(UserRoles.Volunteer) ? "Volunteer" :
