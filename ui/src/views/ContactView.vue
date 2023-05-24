@@ -173,20 +173,24 @@ export default {
 <style>
 .left-card {
   padding: 25px;
+  border-radius: 45px;
 }
 
 .left-div {
   padding: 25px;
   background-color: #6f5e4f7e;
+  border-radius: 45px;
 }
 
 .right-card {
   padding: 25px;
+  border-radius: 45px;
 }
 
 .right-div {
   padding: 25px;
   background-color: #6f5e4f7e;
+  border-radius: 45px;
 }
 
 .main {

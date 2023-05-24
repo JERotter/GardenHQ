@@ -36,6 +36,11 @@
       <v-btn icon to="/dashboard" link>
         <v-icon>mdi-view-dashboard</v-icon>
       </v-btn>
+
+      <v-btn icon to="/" link>
+        <v-icon>mdi-logout</v-icon>
+      </v-btn>
+      
     </v-app-bar>
     <v-main>
       <div class="pa-6">
