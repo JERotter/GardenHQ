@@ -6,8 +6,11 @@
         <v-row>
           <v-col>
             <div class="left-div">
-              <v-card class="left-card" title="Create Your Account">
+              <!-- <v-card class="left-card" title="Create Your Account"> -->
+                <div class="left-card">
+
                 <form @submit.prevent="submit">
+                  <h2>Create Your Account</h2>
                   <v-text-field
                     v-model="invitationCode.value.value"
                     :counter="10"
@@ -87,7 +90,9 @@
                   <v-btn class="me-4" type="submit"> Submit </v-btn>
                   <v-btn @click="handleReset"> clear </v-btn>
                 </form>
-              </v-card>
+              </div>
+
+              <!-- </v-card> -->
             </div>
           </v-col>
         </v-row>
@@ -203,20 +208,14 @@ export default {
 <style>
 .left-card {
   padding: 25px;
+  background-color: white;
+  border-radius: 45px;
 }
 
 .left-div {
   padding: 25px;
   background-color: #6f5e4f7e;
-}
-
-.right-card {
-  padding: 25px;
-}
-
-.right-div {
-  padding: 25px;
-  background-color: #6f5e4f7e;
+  border-radius: 45px;
 }
 
 .main {
