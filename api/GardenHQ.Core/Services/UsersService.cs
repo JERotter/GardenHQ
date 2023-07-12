@@ -50,10 +50,10 @@ public class UsersService : IUsersService
             LastName = "Stringer",
             Email = "string@string",
             Address = fakeAddress,
-            Phone = "(111) 555 - 5555",
+            PhoneNumber = "(111) 555 - 5555",
             DateOfBirth = "5/9/1998",
             AssignedTasks = null,
-            Type = UserType.Volunteer,
+            Status = UserStatus.Member,
             Id = fakeUserId
         };
 

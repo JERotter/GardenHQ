@@ -1,0 +1,12 @@
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/bin/Debug/net6.0/GardenHQ.Common.deps.json
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/bin/Debug/net6.0/GardenHQ.Common.dll
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/bin/Debug/net6.0/GardenHQ.Common.pdb
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/obj/Debug/net6.0/GardenHQ.Common.csproj.AssemblyReference.cache
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/obj/Debug/net6.0/GardenHQ.Common.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/obj/Debug/net6.0/GardenHQ.Common.AssemblyInfoInputs.cache
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/obj/Debug/net6.0/GardenHQ.Common.AssemblyInfo.cs
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/obj/Debug/net6.0/GardenHQ.Common.csproj.CoreCompileInputs.cache
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/obj/Debug/net6.0/GardenHQ.Common.dll
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/obj/Debug/net6.0/refint/GardenHQ.Common.dll
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/obj/Debug/net6.0/GardenHQ.Common.pdb
+/Users/jenell/Desktop/Projects/GardenHQ/api/GardenHQ.Common/obj/Debug/net6.0/ref/GardenHQ.Common.dll

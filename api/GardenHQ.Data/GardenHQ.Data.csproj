@@ -37,6 +37,7 @@
     <None Remove="Profiles\" />
     <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
     <None Remove="Microsoft.AspNetCore.Identity" />
+    <None Remove="EntityConfig\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -44,5 +45,6 @@
     <Folder Include="Dtos\ResponseDtos\" />
     <Folder Include="Dtos\RequestDtos\" />
     <Folder Include="Profiles\" />
+    <Folder Include="EntityConfig\" />
   </ItemGroup>
 </Project>

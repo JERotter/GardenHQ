@@ -7,5 +7,5 @@ public class NewUserRequestDto
 {
 	public string FirstName { get; set; }
 	public string LastName { get; set; }
-	public UserType Type { get; set; } = UserType.Volunteer;
+	public UserStatus Status { get; set; } 
 }

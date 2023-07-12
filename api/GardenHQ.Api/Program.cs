@@ -1,8 +1,12 @@
-﻿using AutoMapper;
+﻿using System.Text;
+using AutoMapper;
+using GardenHQ.Common.Authentication;
 using GardenHQ.Core.Services;
 using GardenHQ.Data;
 using GardenHQ.Data.Profiles;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +34,31 @@ builder.Services.AddDbContext<GardenDbContext>(options =>
     options.UseNpgsql(postgresConnectionString);
 });
 
+//https://www.youtube.com/watch?v=Y-MjCw6thao&list=TLPQMTEwNzIwMjNiW3NlgnSO1Q&index=2&ab_channel=MohamadLawand
+builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(key: "JwtConfig"));
+
+builder.Services.AddAuthentication(configureOptions: options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+}).AddJwtBearer(jwt =>
+{
+    var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection(key: "jwtConfig:Secret").Value);
+
+    jwt.SaveToken = true;
+    jwt.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false, //for dev
+        ValidateAudience = false, // for dev
+        RequireExpirationTime = false, //for dev
+        ValidateLifetime = true
+    };
+});
+
 var config = new MapperConfiguration(options =>
 {
     options.AddProfile(new MappingProfiles());
@@ -53,13 +82,10 @@ app.UseCors(options =>
 });
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.MapHealthChecks("/api/healthcheck");
-
 app.Run();
 
 /// <summary>
