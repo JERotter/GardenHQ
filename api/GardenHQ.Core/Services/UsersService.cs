@@ -4,6 +4,7 @@ using GardenHQ.Data;
 using GardenHQ.Data.Dtos.RequestDtos;
 using GardenHQ.Data.Dtos.ResponseDtos;
 using GardenHQ.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -50,10 +51,10 @@ public class UsersService : IUsersService
             LastName = "Stringer",
             Email = "string@string",
             Address = fakeAddress,
-            Phone = "(111) 555 - 5555",
+            PhoneNumber = "(111) 555 - 5555",
             DateOfBirth = "5/9/1998",
             AssignedTasks = null,
-            Type = UserType.Volunteer,
+            Status = UserStatus.Member,
             Id = fakeUserId
         };
 
@@ -64,6 +65,7 @@ public class UsersService : IUsersService
 
     }
 
+    //delete when obsolete//
     public async Task<BaseResponseDto> CreateUser(NewUserRequestDto requestDto)
     {
         var newUser = _mapper.Map<User>(requestDto);
@@ -74,7 +76,7 @@ public class UsersService : IUsersService
         return new BaseResponseDto { Message = "New user added", Success = true };
     }
 
-
+    //[Authorize(AuthenticationSchemes = "Local")]
     public async Task<BaseResponseDto<IEnumerable<UsersListResponseDto>>> GetUsers()
     {
         var dbUsers = _dbContext.Set<User>()
@@ -104,7 +106,8 @@ public class UsersService : IUsersService
         return new BaseResponseDto<UserProfileDto> { Message = "User found", Success = true, Data = dbProfile };
     }
 
-    //patch user type [admin only]
+    //update UserStatus ie: ban user [admin only]
+    //patch userType (roles) [admin only]
 
     public async Task<BaseResponseDto> UpdateUser(Guid userId, NewUserRequestDto UserRequestDto)
     {
@@ -135,5 +138,4 @@ public class UsersService : IUsersService
 
         return new BaseResponseDto { Message = "User has been deleted.", Success = true };
     }
-
 }
