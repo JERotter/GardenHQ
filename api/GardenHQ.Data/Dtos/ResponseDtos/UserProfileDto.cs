@@ -17,4 +17,5 @@ public class UserProfileDto
     public string CreatedOn { get; set; }
     public string Type { get; set; }
     public List<GardenTask>? AssignedTasks { get; set; }
+    public UserStatus Status { get; set; }
 }

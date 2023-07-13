@@ -64,6 +64,7 @@ public class UsersService : IUsersService
 
     }
 
+    //delete when obsolete//
     public async Task<BaseResponseDto> CreateUser(NewUserRequestDto requestDto)
     {
         var newUser = _mapper.Map<User>(requestDto);
@@ -104,7 +105,8 @@ public class UsersService : IUsersService
         return new BaseResponseDto<UserProfileDto> { Message = "User found", Success = true, Data = dbProfile };
     }
 
-    //patch user type [admin only]
+    //update UserStatus ie: ban user [admin only]
+    //patch userType (roles) [admin only]
 
     public async Task<BaseResponseDto> UpdateUser(Guid userId, NewUserRequestDto UserRequestDto)
     {
@@ -135,5 +137,4 @@ public class UsersService : IUsersService
 
         return new BaseResponseDto { Message = "User has been deleted.", Success = true };
     }
-
 }
