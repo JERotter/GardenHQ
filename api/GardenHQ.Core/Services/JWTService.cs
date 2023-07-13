@@ -92,7 +92,7 @@ public class JWTService : IJWTService
 
     }
 
-    public async Task<BaseResponseDto<AuthResult>> Login([FromBody] LoginRequestDto login)
+    public async Task<BaseResponseDto<string>> Login([FromBody] LoginRequestDto login)
     {
         //get user by email from usermanager
         var dbUser = await _userManager.FindByEmailAsync(login.Email);
@@ -100,18 +100,19 @@ public class JWTService : IJWTService
         //make sure user exists
         if (dbUser == null)
         {
-            return new BaseResponseDto<AuthResult> { Success = false};
+            return new BaseResponseDto<string> { Success = false};
         }
 
-        //make sure pw matches
+        //make sure pw matches maybe
 
         //generate jwt
-        var userToken = GenerateToken(dbUser);
+        var generatedToken = GenerateToken(dbUser);
+
+        var userToken = new JwtSecurityTokenHandler().WriteToken(generatedToken);
 
         //return jwt
-        //data.Token = geratedToken
-        return new BaseResponseDto<AuthResult> { };
-
+        return new BaseResponseDto<string> { Success = true, Message = "Token created", Data = userToken };
+          
     }
 
     public async Task<BaseResponseDto<AuthResult>> RefreshToken([FromBody] NewUserRequestDto dto)

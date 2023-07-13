@@ -4,6 +4,7 @@ using GardenHQ.Data;
 using GardenHQ.Data.Dtos.RequestDtos;
 using GardenHQ.Data.Dtos.ResponseDtos;
 using GardenHQ.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -75,7 +76,7 @@ public class UsersService : IUsersService
         return new BaseResponseDto { Message = "New user added", Success = true };
     }
 
-
+    //[Authorize(AuthenticationSchemes = "Local")]
     public async Task<BaseResponseDto<IEnumerable<UsersListResponseDto>>> GetUsers()
     {
         var dbUsers = _dbContext.Set<User>()

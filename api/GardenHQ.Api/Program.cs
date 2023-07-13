@@ -53,7 +53,7 @@ builder.Services.AddAuthentication(configureOptions: options =>
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
-}).AddJwtBearer(jwt =>
+}).AddJwtBearer("Local", jwt =>
 {
     var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection(key: "jwtConfig:Secret").Value);
 
@@ -96,7 +96,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(options =>
 {
-    options.WithOrigins("http://127.0.0.1:3000");
+    options.AllowAnyOrigin();
+    //options.WithOrigins("http://127.0.0.1:3000");
 
 });
 

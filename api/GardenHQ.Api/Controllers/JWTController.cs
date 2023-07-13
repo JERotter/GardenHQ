@@ -42,7 +42,7 @@ public class JWTController : ControllerBase
     }
 
     [HttpPost("Login")]
-    public async Task<ActionResult<BaseResponseDto<AuthResult>>> Login(LoginRequestDto login)
+    public async Task<ActionResult<BaseResponseDto<string>>> Login(LoginRequestDto login)
     {
         var resp = await _jWTService.Login(login);
 
