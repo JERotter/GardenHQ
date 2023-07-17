@@ -31,56 +31,31 @@ public class UsersControllerTests
     #endregion
 
     #region Passing States
-    [Fact]
-    public async Task CreateUser_ReturnsStatusCode200_OnSuccess()
+[Fact]
+public async Task GetUsers_ReturnsStatusCode200_OnSuccess()
+{
+    //Arrange
+    var fakeUserResponseDto = new UsersListResponseDto
     {
-        //Arrange
-        var fakeUserRequestDto = new NewUserRequestDto
-        {
-            FirstName = "Test M.",
-            LastName = "Stringer",
-            Type = UserType.Volunteer
-        };
-
-        var expectedResponse = new BaseResponseDto() { Message = "New user added", Success = true };
-        _mockUsersService.Setup(service => service.CreateUser(fakeUserRequestDto)).ReturnsAsync(expectedResponse);
-
-        //Act
-        var testResult = await _sut.CreateUser(fakeUserRequestDto);
-
-        //Assert
-        testResult.Should().NotBeNull();
-        var obj = testResult.Result as ObjectResult;
-        obj.StatusCode.Should().Be(200);
-        _mockUsersService.VerifyAll();
-    }
-
-    [Fact]
-    public async Task GetUsers_ReturnsStatusCode200_OnSuccess()
-    {
-        //Arrange
-        var fakeUserResponseDto = new UsersListResponseDto
-        {
-            FirstName = "Test M.",
-            LastName = "Stringer",
-            Type = "Volunteer"
-        };
-        var fakeUserList = new List<UsersListResponseDto>();
-        fakeUserList.Add(fakeUserResponseDto);
+        FirstName = "Test M.",
+        LastName = "Stringer",
+    };
+    var fakeUserList = new List<UsersListResponseDto>();
+    fakeUserList.Add(fakeUserResponseDto);
 
 
-        var expectedResponse = new BaseResponseDto<IEnumerable<UsersListResponseDto>> { Message = "Users found", Success = true, Data = fakeUserList };
-        _mockUsersService.Setup(service => service.GetUsers()).ReturnsAsync(expectedResponse);
+    var expectedResponse = new BaseResponseDto<IEnumerable<UsersListResponseDto>> { Message = "Users found", Success = true, Data = fakeUserList };
+    _mockUsersService.Setup(service => service.GetUsers()).ReturnsAsync(expectedResponse);
 
-        //Act
-        var testResult = await _sut.GetUsers();
+    //Act
+    var testResult = await _sut.GetUsers();
 
-        //Assert
-        testResult.Should().NotBeNull();
-        var obj = testResult.Result as ObjectResult;
-        obj.StatusCode.Should().Be(200);
-        _mockUsersService.VerifyAll();
-    }
+    //Assert
+    testResult.Should().NotBeNull();
+    var obj = testResult.Result as ObjectResult;
+    obj.StatusCode.Should().Be(200);
+    _mockUsersService.VerifyAll();
+}
 }
 
 //Task<BaseResponseDto> CreateUser(NewUserRequestDto requestDto);

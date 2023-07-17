@@ -24,22 +24,22 @@ namespace GardenHQ.Api.Controllers
         }
 
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("Populate")]
-        public async Task<ActionResult<BaseResponseDto>> PostUsers()
-        {
-            var response = await _usersService.PopulateUsers();
+        //[HttpPost("Populate")]
+        //public async Task<ActionResult<BaseResponseDto>> PostUsers()
+        //{
+        //    var response = await _usersService.PopulateUsers();
 
-            return response.Success ? Ok(response) : NotFound(response);
-        }
+        //    return response.Success ? Ok(response) : NotFound(response);
+        //}
 
-        [HttpPost]
-        public async Task<ActionResult<BaseResponseDto>> CreateUser(NewUserRequestDto requestDto)
-        {
-            var response = await _usersService.CreateUser(requestDto);
+        //[HttpPost]
+        //public async Task<ActionResult<BaseResponseDto>> CreateUser(NewUserRequestDto requestDto)
+        //{
+        //    var response = await _usersService.CreateUser(requestDto);
 
-            return response.Success ? Ok(response) : NotFound(response);
+        //    return response.Success ? Ok(response) : NotFound(response);
 
-        }
+        //}
 
         [HttpGet("Users")]
         public async Task<ActionResult<BaseResponseDto<IEnumerable<UsersListResponseDto>>>> GetUsers()

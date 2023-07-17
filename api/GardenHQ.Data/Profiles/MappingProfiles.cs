@@ -27,8 +27,10 @@ public class MappingProfiles : Profile
         //source, destination
         //users
         CreateMap<User, UsersListResponseDto>();
-        CreateMap<NewUserRequestDto, User>();
+        CreateMap<NewUserRequestDto, User>()
+            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address));
         CreateMap<User, UserProfileDto>();
+        CreateMap<AddressDto, Address>();
 
         //tasks
         CreateMap<GardenTask, TaskTableDto>();

@@ -69,10 +69,10 @@ public class UsersServiceTests : IClassFixture<BaseTestFixture<UsersServiceTests
             LastName = "Stringer",
             Email = "string@string",
             Address = fakeAddress,
-            Phone = "(111) 555 - 5555",
+            PhoneNumber = "(111) 555 -5555",
             DateOfBirth = "5/9/1998",
             AssignedTasks = null,
-            Type = UserType.Volunteer,
+            //Type = UserType.Volunteer,
             Id = fakeUserId,
             AbbreviatedId = fakeUserId.ToString().Substring(0, 4),
 
@@ -89,7 +89,7 @@ public class UsersServiceTests : IClassFixture<BaseTestFixture<UsersServiceTests
             FirstName = fakeUser.FirstName,
             Id = fakeUser.Id,
             LastName = fakeUser.LastName,
-            Type = fakeUser.Type.ToString()
+            //Type = fakeUser.Type.ToString()
         };
 
         fakeUserList.Add(fakeUsersDto);
@@ -101,7 +101,7 @@ public class UsersServiceTests : IClassFixture<BaseTestFixture<UsersServiceTests
 
         //Assert
         var testVal = testVerification.Data;
-        var testName = testVal.Select(t => t.LastName).First();
+        var testName = testVal.Select(t => t.LastName).Last();
         Assert.True(testVerification.Success);
         Assert.Equal("Stringer", testName);
     }

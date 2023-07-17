@@ -29,7 +29,6 @@ public class JWTService : IJWTService
     private readonly ILogger<JWTService> _logger;
 
     public JWTService(GardenDbContext dbContext, UserManager<User> userManager, IOptions<JwtConfig> jwtConfig, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<JWTService> logger )
-    //public JWTService(GardenDbContext dbContext, UserManager<User> userManager, JwtConfig jwtConfig, IMapper mapper, HttpContextAccessor httpContextAccessor, ILogger<JWTService> logger )
     {
         _dbContext = dbContext;
         _userManager = userManager;
@@ -42,33 +41,43 @@ public class JWTService : IJWTService
     public async Task<BaseResponseDto<AuthResult>> RegisterNewUser([FromBody] NewUserRequestDto dto)
     {
         //if user already exists
+        var alreadyRegistered = _dbContext.Set<User>()
+            .Where(u => u.Email == dto.Email).ToList();
+
+        if (alreadyRegistered.Count() > 0)
+        {
+            return new BaseResponseDto<AuthResult> { Success = false, Message = "User already exists" };
+
+        }
 
         //if invitation codes + email do NOT match invitee info
 
         //create user object
         var newUser = _mapper.Map<User>(dto);
 
-        //add user to db???
+        //add user to db
         var createdUser = await _userManager.CreateAsync(newUser, dto.Password);
 
-        //if (!createdUser.Succeeded)
-        //{
-        //false
-        //}
+        if (!createdUser.Succeeded)
+        {
+            return new BaseResponseDto<AuthResult> { Success = false, Message = "Registration failure" };
+        }
 
         //update stored user data
-        //User.create(newUser.Id)
-        //_dbContext.SaveChanges();
+        newUser.Create(newUser.Id);
+        newUser.AbbreviatedId = newUser.Id.ToString().Substring(0, 4);
+        newUser.NormalizedEmail = _userManager.NormalizeEmail(newUser.Email);
+        _dbContext.SaveChanges();
 
         //generate tokens
 
         //return creation confirmation and token in AuthResult
-        return new BaseResponseDto<AuthResult> { };
+        return new BaseResponseDto<AuthResult> {Success = true, Message = "New user registered", Data = new AuthResult { Token = newUser.SecurityStamp  } };
 
     }
 
     //https://www.youtube.com/watch?v=4cFhYUK8wnc&ab_channel=MilanJovanovi%C4%87
-    private JwtSecurityToken GenerateToken ( User user)
+    private JwtSecurityToken GenerateToken (User user)
     {
         var claims = new Claim[] {
             new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
