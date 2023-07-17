@@ -38,7 +38,7 @@ public class JWTController : ControllerBase
     {
         var resp = await _jWTService.RegisterNewUser(dto);
 
-        return resp.Success ? Ok(resp.Data) : BadRequest();
+        return resp.Success ? Ok(resp) : BadRequest(resp);
     }
 
     [HttpPost("Login")]
@@ -46,7 +46,7 @@ public class JWTController : ControllerBase
     {
         var resp = await _jWTService.Login(login);
 
-        return resp.Success ? Ok(resp.Data) : BadRequest();
+        return resp.Success ? Ok(resp) : BadRequest();
     }
 }
 

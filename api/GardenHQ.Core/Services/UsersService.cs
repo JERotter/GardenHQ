@@ -65,16 +65,15 @@ public class UsersService : IUsersService
 
     }
 
-    //delete when obsolete//
-    public async Task<BaseResponseDto> CreateUser(NewUserRequestDto requestDto)
-    {
-        var newUser = _mapper.Map<User>(requestDto);
+    //public async Task<BaseResponseDto> CreateUser(NewUserRequestDto requestDto)
+    //{
+    //    var newUser = _mapper.Map<User>(requestDto);
 
-        await _dbContext.AddAsync(newUser);
-        newUser.AbbreviatedId = newUser.Id.ToString().Substring(0, 4);
-        await _dbContext.SaveChangesAsync();
-        return new BaseResponseDto { Message = "New user added", Success = true };
-    }
+    //    await _dbContext.AddAsync(newUser);
+    //    newUser.AbbreviatedId = newUser.Id.ToString().Substring(0, 4);
+    //    await _dbContext.SaveChangesAsync();
+    //    return new BaseResponseDto { Message = "New user added", Success = true };
+    //}
 
     //[Authorize(AuthenticationSchemes = "Local")]
     public async Task<BaseResponseDto<IEnumerable<UsersListResponseDto>>> GetUsers()
